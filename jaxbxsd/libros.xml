@@ -1,0 +1,14 @@
+<Libros>
+    <Libro publicado_en="1954">
+        <titulo>El Señor de los anillos</titulo>
+        <autor>J. R. R. Tolkien</autor>
+    </Libro>
+    <Libro publicado_en="1989">
+        <titulo>Némesis</titulo>
+        <autor>Isaac Asimov</autor>
+    </Libro>
+    <Libro publicado_en="1977">
+        <titulo>La esfinge</titulo>
+        <autor>Tom Learner</autor>
+    </Libro>
+</Libros>

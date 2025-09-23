@@ -1,0 +1,240 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:georss="http://www.georss.org/georss" version="2.0">
+<channel>
+<atom:link href="https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss" rel="self" type="application/rss+xml"/>
+<link>https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss</link>
+<title>NASA Earth Observatory Image of the Day</title>
+<description>Your source for monitoring regional and global changes on our planet through images and stories. </description>
+<language>en-us</language>
+<pubDate>Wed, 17 Sep 2025 09:09:00 -0400</pubDate>
+<lastBuildDate>Wed, 17 Sep 2025 09:09:00 -0400</lastBuildDate>
+<webMaster>paul.przyborski@nasa.gov (Paul Przyborski)</webMaster>
+<image>
+<title>NASA Earth Observatory Image of the Day</title>
+<url>https://earthobservatory.nasa.gov/img/logo-feed.gif</url>
+<link>https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss</link>
+<width>144</width>
+<height>50</height>
+<description>Your source for monitoring regional and global changes on our planet through images and stories. </description>
+</image>
+<item>
+<title>
+<![CDATA[ Australia’s Howick River ]]>
+</title>
+<link>https://earthobservatory.nasa.gov/images/154800/australias-howick-river</link>
+<media:thumbnail url="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154800/capemelville_oli2_20250819_th.jpg"/>
+<description>
+<![CDATA[ Winding across the Jeannie catchment in northern Queensland, the river sustains diverse ecosystems on its way to the Coral Sea. ]]>
+</description>
+<content:encoded>
+<![CDATA[ <p> <a href="https://earthobservatory.nasa.gov/images/154800/australias-howick-river"><img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154800/capemelville_oli2_20250819_th.jpg" border="0" alt="Australia’s Howick River"/></a><br/> Winding across the Jeannie catchment in northern Queensland, the river sustains diverse ecosystems on its way to the Coral Sea.</p> <p><a href="https://earthobservatory.nasa.gov/images/154800/australias-howick-river">Read More...</a></p> ]]>
+</content:encoded>
+<dc:creator>
+<![CDATA[ NASA Earth Observatory ]]>
+</dc:creator>
+<pubDate>Wed, 17 Sep 2025 00:00:00 -0400</pubDate>
+<categories>
+<category>Land,Water</category>
+</categories>
+<guid>https://earthobservatory.nasa.gov/images/154800/australias-howick-river</guid>
+<georss:point>144.71596860862 -14.563487626189</georss:point>
+</item>
+<item>
+<title>
+<![CDATA[ Smoky Skies in the Pacific Northwest ]]>
+</title>
+<link>https://earthobservatory.nasa.gov/images/154797/smoky-skies-in-the-pacific-northwest</link>
+<media:thumbnail url="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154797/pnwsmoke_tmo_20250913_th.jpg"/>
+<description>
+<![CDATA[ Smoke filled river valleys in northeastern Washington and parts of British Columbia. ]]>
+</description>
+<content:encoded>
+<![CDATA[ <p> <a href="https://earthobservatory.nasa.gov/images/154797/smoky-skies-in-the-pacific-northwest"><img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154797/pnwsmoke_tmo_20250913_th.jpg" border="0" alt="Smoky Skies in the Pacific Northwest"/></a><br/> Smoke filled river valleys in northeastern Washington and parts of British Columbia.</p> <p><a href="https://earthobservatory.nasa.gov/images/154797/smoky-skies-in-the-pacific-northwest">Read More...</a></p> ]]>
+</content:encoded>
+<dc:creator>
+<![CDATA[ NASA Earth Observatory ]]>
+</dc:creator>
+<pubDate>Mon, 15 Sep 2025 17:06:04 -0400</pubDate>
+<categories>
+<category>Atmosphere,Fires</category>
+</categories>
+<guid>https://earthobservatory.nasa.gov/images/154797/smoky-skies-in-the-pacific-northwest</guid>
+<georss:point>-118.27633829512 48.255672483524</georss:point>
+</item>
+<item>
+<title>
+<![CDATA[ Mapping Kamchatka Earthquake Displacement ]]>
+</title>
+<link>https://earthobservatory.nasa.gov/images/154776/mapping-kamchatka-earthquake-displacement</link>
+<media:thumbnail url="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154776/kamchatka_aria_20250802_th.jpg"/>
+<description>
+<![CDATA[ A group of satellites with interferometric synthetic aperture radar makes it possible for geologists to detect how much and where land surfaces shift due to earthquakes.   ]]>
+</description>
+<content:encoded>
+<![CDATA[ <p> <a href="https://earthobservatory.nasa.gov/images/154776/mapping-kamchatka-earthquake-displacement"><img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154776/kamchatka_aria_20250802_th.jpg" border="0" alt="Mapping Kamchatka Earthquake Displacement"/></a><br/> A group of satellites with interferometric synthetic aperture radar makes it possible for geologists to detect how much and where land surfaces shift due to earthquakes.  </p> <p><a href="https://earthobservatory.nasa.gov/images/154776/mapping-kamchatka-earthquake-displacement">Read More...</a></p> ]]>
+</content:encoded>
+<dc:creator>
+<![CDATA[ NASA Earth Observatory ]]>
+</dc:creator>
+<pubDate>Mon, 15 Sep 2025 00:00:00 -0400</pubDate>
+<categories>
+<category>Land</category>
+</categories>
+<guid>https://earthobservatory.nasa.gov/images/154776/mapping-kamchatka-earthquake-displacement</guid>
+<georss:point>161.015625 55.776573018668</georss:point>
+</item>
+<item>
+<title>
+<![CDATA[ Traversing Buenos Aires at Night ]]>
+</title>
+<link>https://earthobservatory.nasa.gov/images/154789/traversing-buenos-aires-at-night</link>
+<media:thumbnail url="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154789/iss073e0176299_th.jpg"/>
+<description>
+<![CDATA[ The nighttime lightscape of Argentina’s largest metropolitan area reveals transportation corridors and variations in lighting types. ]]>
+</description>
+<content:encoded>
+<![CDATA[ <p> <a href="https://earthobservatory.nasa.gov/images/154789/traversing-buenos-aires-at-night"><img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154789/iss073e0176299_th.jpg" border="0" alt="Traversing Buenos Aires at Night"/></a><br/> The nighttime lightscape of Argentina’s largest metropolitan area reveals transportation corridors and variations in lighting types.</p> <p><a href="https://earthobservatory.nasa.gov/images/154789/traversing-buenos-aires-at-night">Read More...</a></p> ]]>
+</content:encoded>
+<dc:creator>
+<![CDATA[ NASA Earth Observatory ]]>
+</dc:creator>
+<pubDate>Sun, 14 Sep 2025 00:00:00 -0400</pubDate>
+<categories>
+<category>Human Presence</category>
+</categories>
+<guid>https://earthobservatory.nasa.gov/images/154789/traversing-buenos-aires-at-night</guid>
+<georss:point>-58.425284842768 -34.606833678563</georss:point>
+</item>
+<item>
+<title>
+<![CDATA[ Greenland Ice Sheet Gets a Refresh ]]>
+</title>
+<link>https://earthobservatory.nasa.gov/images/154793/greenland-ice-sheet-gets-a-refresh</link>
+<media:thumbnail url="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154793/greenlandmelt_oli2_20250821_th.jpg"/>
+<description>
+<![CDATA[ A moderately intense season of surface melting left part of the ice sheet dirty gray in summer 2025, but snowfall has since freshened its appearance. ]]>
+</description>
+<content:encoded>
+<![CDATA[ <p> <a href="https://earthobservatory.nasa.gov/images/154793/greenland-ice-sheet-gets-a-refresh"><img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154793/greenlandmelt_oli2_20250821_th.jpg" border="0" alt="Greenland Ice Sheet Gets a Refresh"/></a><br/> A moderately intense season of surface melting left part of the ice sheet dirty gray in summer 2025, but snowfall has since freshened its appearance.</p> <p><a href="https://earthobservatory.nasa.gov/images/154793/greenland-ice-sheet-gets-a-refresh">Read More...</a></p> ]]>
+</content:encoded>
+<dc:creator>
+<![CDATA[ NASA Earth Observatory ]]>
+</dc:creator>
+<pubDate>Sat, 13 Sep 2025 00:00:00 -0400</pubDate>
+<categories>
+<category>Snow and Ice</category>
+</categories>
+<guid>https://earthobservatory.nasa.gov/images/154793/greenland-ice-sheet-gets-a-refresh</guid>
+<georss:point>-50.394287109375 65.298059363838</georss:point>
+</item>
+<item>
+<title>
+<![CDATA[ Color Along the Anadyr ]]>
+</title>
+<link>https://earthobservatory.nasa.gov/images/154785/color-along-the-anadyr</link>
+<media:thumbnail url="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154785/anadyr_tmo_20250907_th.jpg"/>
+<description>
+<![CDATA[ Across the northeastern Siberian tundra, summer greens shift to vibrant reds, yellows, and browns as temperatures drop and days shorten. ]]>
+</description>
+<content:encoded>
+<![CDATA[ <p> <a href="https://earthobservatory.nasa.gov/images/154785/color-along-the-anadyr"><img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154785/anadyr_tmo_20250907_th.jpg" border="0" alt="Color Along the Anadyr"/></a><br/> Across the northeastern Siberian tundra, summer greens shift to vibrant reds, yellows, and browns as temperatures drop and days shorten.</p> <p><a href="https://earthobservatory.nasa.gov/images/154785/color-along-the-anadyr">Read More...</a></p> ]]>
+</content:encoded>
+<dc:creator>
+<![CDATA[ NASA Earth Observatory ]]>
+</dc:creator>
+<pubDate>Fri, 12 Sep 2025 00:00:00 -0400</pubDate>
+<categories>
+<category>Land</category>
+</categories>
+<guid>https://earthobservatory.nasa.gov/images/154785/color-along-the-anadyr</guid>
+<georss:point>177.451171875 64.778807146599</georss:point>
+</item>
+<item>
+<title>
+<![CDATA[ Monsoon Rains Flood Pakistan ]]>
+</title>
+<link>https://earthobservatory.nasa.gov/images/154781/monsoon-rains-flood-pakistan</link>
+<media:thumbnail url="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154781/pakistanflooding_vir2_20250909_th.jpg"/>
+<description>
+<![CDATA[ Heavy rains and flooding across the country since June 2025 have displaced millions of people, devastated infrastructure, and submerged farmland. ]]>
+</description>
+<content:encoded>
+<![CDATA[ <p> <a href="https://earthobservatory.nasa.gov/images/154781/monsoon-rains-flood-pakistan"><img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154781/pakistanflooding_vir2_20250909_th.jpg" border="0" alt="Monsoon Rains Flood Pakistan"/></a><br/> Heavy rains and flooding across the country since June 2025 have displaced millions of people, devastated infrastructure, and submerged farmland.</p> <p><a href="https://earthobservatory.nasa.gov/images/154781/monsoon-rains-flood-pakistan">Read More...</a></p> ]]>
+</content:encoded>
+<dc:creator>
+<![CDATA[ NASA Earth Observatory ]]>
+</dc:creator>
+<pubDate>Wed, 10 Sep 2025 16:03:23 -0400</pubDate>
+<categories>
+<category>Water,Floods</category>
+</categories>
+<guid>https://earthobservatory.nasa.gov/images/154781/monsoon-rains-flood-pakistan</guid>
+<georss:point>71.175273706614 29.541541046973</georss:point>
+</item>
+<item>
+<title>
+<![CDATA[ Dust in the “Eye” of the Tarim Basin ]]>
+</title>
+<link>https://earthobservatory.nasa.gov/images/154772/dust-in-the-eye-of-the-tarim-basin</link>
+<media:thumbnail url="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154772/tarim_dust_vir2_20250901_th.jpg"/>
+<description>
+<![CDATA[ Satellites have observed episodes of dust swirling across the basin in western China for decades. ]]>
+</description>
+<content:encoded>
+<![CDATA[ <p> <a href="https://earthobservatory.nasa.gov/images/154772/dust-in-the-eye-of-the-tarim-basin"><img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154772/tarim_dust_vir2_20250901_th.jpg" border="0" alt="Dust in the “Eye” of the Tarim Basin"/></a><br/> Satellites have observed episodes of dust swirling across the basin in western China for decades.</p> <p><a href="https://earthobservatory.nasa.gov/images/154772/dust-in-the-eye-of-the-tarim-basin">Read More...</a></p> ]]>
+</content:encoded>
+<dc:creator>
+<![CDATA[ NASA Earth Observatory ]]>
+</dc:creator>
+<pubDate>Tue, 09 Sep 2025 17:07:09 -0400</pubDate>
+<categories>
+<category>Atmosphere,Dust and Haze</category>
+</categories>
+<guid>https://earthobservatory.nasa.gov/images/154772/dust-in-the-eye-of-the-tarim-basin</guid>
+<georss:point>82.901434362287 40.711984822599</georss:point>
+</item>
+<item>
+<title>
+<![CDATA[ Hurricane Kiko Nears Hawaii ]]>
+</title>
+<link>https://earthobservatory.nasa.gov/images/154769/hurricane-kiko-nears-hawaii</link>
+<media:thumbnail url="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154769/hurricanekiki_vir_20250907_th.jpg"/>
+<description>
+<![CDATA[ The storm became a major hurricane while traversing the eastern Pacific but weakened as it approached the islands. ]]>
+</description>
+<content:encoded>
+<![CDATA[ <p> <a href="https://earthobservatory.nasa.gov/images/154769/hurricane-kiko-nears-hawaii"><img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154769/hurricanekiki_vir_20250907_th.jpg" border="0" alt="Hurricane Kiko Nears Hawaii"/></a><br/> The storm became a major hurricane while traversing the eastern Pacific but weakened as it approached the islands.</p> <p><a href="https://earthobservatory.nasa.gov/images/154769/hurricane-kiko-nears-hawaii">Read More...</a></p> ]]>
+</content:encoded>
+<dc:creator>
+<![CDATA[ NASA Earth Observatory ]]>
+</dc:creator>
+<pubDate>Mon, 08 Sep 2025 15:28:24 -0400</pubDate>
+<categories>
+<category>Atmosphere,Severe Storms</category>
+</categories>
+<guid>https://earthobservatory.nasa.gov/images/154769/hurricane-kiko-nears-hawaii</guid>
+<georss:point>-146.07421875 17.392579271058</georss:point>
+</item>
+<item>
+<title>
+<![CDATA[ Alaska’s Brand New Island ]]>
+</title>
+<link>https://earthobservatory.nasa.gov/images/154764/alaskas-brand-new-island</link>
+<media:thumbnail url="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154764/ak_alsekglacier_oli2_20250806_th.jpg"/>
+<description>
+<![CDATA[ A landmass that was once encased in the ice of the Alsek Glacier is now surrounded by water. ]]>
+</description>
+<content:encoded>
+<![CDATA[ <p> <a href="https://earthobservatory.nasa.gov/images/154764/alaskas-brand-new-island"><img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/154000/154764/ak_alsekglacier_oli2_20250806_th.jpg" border="0" alt="Alaska’s Brand New Island"/></a><br/> A landmass that was once encased in the ice of the Alsek Glacier is now surrounded by water.</p> <p><a href="https://earthobservatory.nasa.gov/images/154764/alaskas-brand-new-island">Read More...</a></p> ]]>
+</content:encoded>
+<dc:creator>
+<![CDATA[ NASA Earth Observatory ]]>
+</dc:creator>
+<pubDate>Mon, 08 Sep 2025 00:00:00 -0400</pubDate>
+<categories>
+<category>Land,Snow and Ice</category>
+</categories>
+<guid>https://earthobservatory.nasa.gov/images/154764/alaskas-brand-new-island</guid>
+<georss:point>-138.12286376953 59.201954474303</georss:point>
+</item>
+</channel>
+</rss>

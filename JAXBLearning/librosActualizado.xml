@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Libros>
+    <Libro publicado_en="1954"/>
+    <Libro publicado_en="1960">
+        <titulo>Nuevo título</titulo>
+    </Libro>
+    <Libro publicado_en="1977"/>
+    <Libro publicado_en="1968">
+        <autor>Arthur C. Clarke</autor>
+        <titulo>2001: Odisea en el espacio</titulo>
+    </Libro>
+</Libros>

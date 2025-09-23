@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coleccion_discos>
+    <disco id="1">
+        <titulo>Abbey Road</titulo>
+        <artista>The Beatles</artista>
+        <anio>1969</anio>
+        <canciones>
+            <cancion>
+                <nombre>Come Together</nombre>
+                <duracion>4:20</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Something</nombre>
+                <duracion>3:02</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Maxwell's Silver Hammer</nombre>
+                <duracion>3:27</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Oh! Darling</nombre>
+                <duracion>3:26</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Octopus's Garden</nombre>
+                <duracion>3:51</duracion>
+            </cancion>
+            <cancion>
+                <nombre>I Want You (She's So Heavy)</nombre>
+                <duracion>7:47</duracion>
+            </cancion>
+        </canciones>
+    </disco>
+
+    <disco id="2">
+        <titulo>The Dark Side of the Moon</titulo>
+        <artista>Pink Floyd</artista>
+        <anio>1973</anio>
+        <canciones>
+            <cancion>
+                <nombre>Speak to Me</nombre>
+                <duracion>1:31</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Breathe</nombre>
+                <duracion>2:57</duracion>
+            </cancion>
+            <cancion>
+                <nombre>On the Run</nombre>
+                <duracion>3:35</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Time</nombre>
+                <duracion>6:53</duracion>
+            </cancion>
+            <cancion>
+                <nombre>The Great Gig in the Sky</nombre>
+                <duracion>4:47</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Money</nombre>
+                <duracion>6:22</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Us and Them</nombre>
+                <duracion>7:51</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Any Colour You Like</nombre>
+                <duracion>3:22</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Brain Damage</nombre>
+                <duracion>3:57</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Eclipse</nombre>
+                <duracion>2:02</duracion>
+            </cancion>
+        </canciones>
+    </disco>
+
+    <disco id="3">
+        <titulo>Thriller</titulo>
+        <artista>Michael Jackson</artista>
+        <anio>1982</anio>
+        <canciones>
+            <cancion>
+                <nombre>Wanna Be Startin' Somethin'</nombre>
+                <duracion>6:03</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Baby Be Mine</nombre>
+                <duracion>4:22</duracion>
+            </cancion>
+            <cancion>
+                <nombre>The Girl Is Mine</nombre>
+                <duracion>3:42</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Thriller</nombre>
+                <duracion>5:57</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Beat It</nombre>
+                <duracion>4:18</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Billie Jean</nombre>
+                <duracion>4:54</duracion>
+            </cancion>
+            <cancion>
+                <nombre>Human Nature</nombre>
+                <duracion>4:06</duracion>
+            </cancion>
+            <cancion>
+                <nombre>P.Y.T. (Pretty Young Thing)</nombre>
+                <duracion>3:43</duracion>
+            </cancion>
+            <cancion>
+                <nombre>The Lady in My Life</nombre>
+                <duracion>4:53</duracion>
+            </cancion>
+        </canciones>
+    </disco>
+</coleccion_discos>
