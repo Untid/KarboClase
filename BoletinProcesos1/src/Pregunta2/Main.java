@@ -5,25 +5,31 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String linea;
 
         System.out.println("Escribe 'fin' para terminar");
 
-        while (true){
+        while (true) {
             linea = sc.nextLine();
 
-            if (linea.equalsIgnoreCase("fin")){
+            if (linea.equalsIgnoreCase("fin")) {
                 System.out.println("Hasta la vista!");
 
                 break;
             }
 
-            try{
+            try {
 
                 // Llamo al proceso padre
-                ProcessBuilder miPb = new ProcessBuilder("C:\\Users\\Javier\\.jdks\\openjdk-24.0.2+12-54","-cp",".","Aleatorio");
+                ProcessBuilder miPb = new ProcessBuilder(
+                        "java",
+                        "-cp",
+                        "C:\\Users\\Javier\\IdeaProjects\\BoletinProcesos1\\out\\production\\BoletinProcesos1",
+                        "Pregunta2.Aleatorio"
+                );
+
                 Process miProceso = miPb.start();
 
                 // Leo la salida del proceso hijo
@@ -33,11 +39,12 @@ public class Main {
 
 
                 miProceso.waitFor();
-            }catch (Exception e ){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-            sc.close();
+
         }
+        sc.close();
     }
 }
 
