@@ -59,9 +59,11 @@ public class Ventana extends JFrame {
 
     private void colocarComponentes(JPanel mipanel){
 
+
+
         // -------------------------Selector comboBOX-----------------------------------------
         comboBox = new JComboBox<>();
-        comboBox.setBounds(20,20,200,25);
+
         comboBox.addActionListener(e -> mostrarLista());
         add(comboBox);
 
@@ -74,9 +76,7 @@ public class Ventana extends JFrame {
         //-------------------------Lista de títulos de la imagen-----------------------------
         lista = new JList<>();
         scroll = new JScrollPane(lista);
-
         scroll.setViewportView(lista);
-        scroll.setBounds(20, 60, 200, 200);
 
         // Cuando se selecciona un título, se carga y muestra la imagen en lblImagen.
         lista.addListSelectionListener(e ->{

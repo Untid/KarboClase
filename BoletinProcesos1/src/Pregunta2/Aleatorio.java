@@ -1,10 +1,8 @@
 package Pregunta2;
 
-import org.w3c.dom.ls.LSOutput;
-
 public class Aleatorio {
-
-    int aleatorio = ((int) Math.random() * 11);
-
-
+    public static void main(String[] args) {
+        int random = (int) (Math.random() * 11);
+        System.out.println(random);
+    }
 }
