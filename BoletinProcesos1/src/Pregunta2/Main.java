@@ -21,8 +21,6 @@ public class Main {
             }
 
             try {
-
-                // Llamo al proceso padre
                 ProcessBuilder miPb = new ProcessBuilder(
                         "java",
                         "-cp",
@@ -32,7 +30,6 @@ public class Main {
 
                 Process miProceso = miPb.start();
 
-                // Leo la salida del proceso hijo
                 BufferedReader reader = new BufferedReader(new InputStreamReader(miProceso.getInputStream()));
                 String numero = reader.readLine();
                 System.out.println(numero);
