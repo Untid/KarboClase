@@ -3,10 +3,8 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.*;
 
 /**
- * Handler personalizado para procesar un archivo RSS con SAX
- * Recolecta los datos de cada <item> del feed.
- * Construye objetos Imagen (titulo, enlace, url, categoria)
- * Agrupa las imágenes en un Map (categoría -> lista de imágenes)
+ * Handler personalizado para procesar un archivo RSS usando SAX.
+ * Construye objetos Imagen a partir de cada <item> y los agrupa por categoría.
  */
 
 public class Handler extends DefaultHandler {
@@ -23,6 +21,11 @@ public class Handler extends DefaultHandler {
     // Flag para saber si estamos dentro de un <item>
     private boolean dentroItem = false;
 
+
+    /**
+     * Devuelve un Map con las imágenes agrupadas por categoría
+     * @return mapa categoría -> Lista de imágenes
+     */
     // Permite acceder a los datos procesados desde fuera
     public Map<String, List<Imagen>> getDatos() {
         return datos;
@@ -53,6 +56,18 @@ public class Handler extends DefaultHandler {
     }
 
     // Se ejecuta al cerrar una etiqueta (</tag>)
+
+    /**
+     *
+     * @param uri The Namespace URI, or the empty string if the
+     *        element has no Namespace URI or if Namespace
+     *        processing is not being performed.
+     * @param localName The local name (without prefix), or the
+     *        empty string if Namespace processing is not being
+     *        performed.
+     * @param qName The qualified name (with prefix), or the
+     *        empty string if qualified names are not available.
+     */
     @Override
     public void endElement(String uri, String localName, String qName) {
         // Si no estamos dentro de un <item>, ignoramos
