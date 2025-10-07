@@ -30,8 +30,6 @@ public class MiHilo implements Runnable{
             primerNumero = segundoNumero;
             segundoNumero = siguienteNumero;
 
-            
-
             try {
                 Thread.sleep(1000);
 
