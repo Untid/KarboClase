@@ -27,15 +27,20 @@ public class Ventana extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        initComponents();
-        loadTasks();
+        initComponents(); // Inicializa los elementos de la interfaz
+        loadTasks(); // Carga las tareas desde MongoDB
     }
 
+    /**
+     * Inicializa y configura todos los componentes de la interfaz
+     */
     private void initComponents() {
         setLayout(new BorderLayout());
 
-        // Tabla
+        // --------- Tabla de tareas ---------
         String[] columns = {"ID", "Título", "Descripción", "Completada"};
+
+        // Modelo de la tabla con columnas no editables
         tableModel = new DefaultTableModel(columns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
