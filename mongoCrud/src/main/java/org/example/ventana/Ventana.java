@@ -37,7 +37,7 @@ public class Ventana extends JFrame {
     private void initComponents() {
         setLayout(new BorderLayout());
 
-        // --------- Tabla de tareas ---------
+        // ------------------- Tabla de tareas ------------------------
         String[] columns = {"ID", "Título", "Descripción", "Completada"};
 
         // Modelo de la tabla con columnas no editables
@@ -49,10 +49,13 @@ public class Ventana extends JFrame {
         };
         taskTable = new JTable(tableModel);
         taskTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        // Detectar selección de fila
         taskTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 int selectedRow = taskTable.getSelectedRow();
                 if (selectedRow >= 0) {
+                    // Guardar ID y mostrar datos en los campos
                     selectedTaskId = (String) tableModel.getValueAt(selectedRow, 0);
                     titleField.setText((String) tableModel.getValueAt(selectedRow, 1));
                     descriptionField.setText((String) tableModel.getValueAt(selectedRow, 2));
@@ -68,7 +71,7 @@ public class Ventana extends JFrame {
         JScrollPane scrollPane = new JScrollPane(taskTable);
         add(scrollPane, BorderLayout.CENTER);
 
-        // Panel de formulario
+        // -----------------------Formulario-------------------------------
         JPanel formPanel = new JPanel(new GridLayout(4, 2, 5, 5));
         formPanel.setBorder(BorderFactory.createTitledBorder("Detalles de la Tarea"));
 
@@ -86,7 +89,7 @@ public class Ventana extends JFrame {
 
         add(formPanel, BorderLayout.NORTH);
 
-        // Botones
+        // ---------------------------Botones----------------------------------
         JPanel buttonPanel = new JPanel(new FlowLayout());
         createButton = new JButton("Crear");
         updateButton = new JButton("Actualizar");
@@ -96,11 +99,14 @@ public class Ventana extends JFrame {
         updateButton.setEnabled(false);
         deleteButton.setEnabled(false);
 
+
+        // Asignar acciones a los botones
         createButton.addActionListener(this::onCreate);
         updateButton.addActionListener(this::onUpdate);
         deleteButton.addActionListener(this::onDelete);
         refreshButton.addActionListener(e -> loadTasks());
 
+        // Agregar botones al panel
         buttonPanel.add(createButton);
         buttonPanel.add(updateButton);
         buttonPanel.add(deleteButton);
@@ -109,6 +115,11 @@ public class Ventana extends JFrame {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    // ------------------------ Métodos de funcionalidad ---------------------
+
+    /**
+     * Carga las tareas desde MongoDB y actualiza la tabla.
+     */
     private void loadTasks() {
         tableModel.setRowCount(0); // Limpiar tabla
         List<Task> tasks = taskDAO.getTareas();
@@ -123,6 +134,11 @@ public class Ventana extends JFrame {
         clearForm();
     }
 
+    /**
+     * Acción del botón "Crear".
+     * Inserta una nueva tarea en MongoDB.
+     * @param e
+     */
     private void onCreate(ActionEvent e) {
         String title = titleField.getText().trim();
         String description = descriptionField.getText().trim();
@@ -139,6 +155,11 @@ public class Ventana extends JFrame {
         loadTasks();
     }
 
+    /**
+     * Acción del botón "Actualizar"
+     * Reemplaza los datos de una tarea existente en la base de de datos
+     * @param e
+     */
     private void onUpdate(ActionEvent e) {
         if (selectedTaskId == null) return;
 
@@ -162,6 +183,11 @@ public class Ventana extends JFrame {
         }
     }
 
+    /**
+     * Acción del botoón "Eliminar".
+     * Elimina la tarea seleccionada tras confirmar
+     * @param e
+     */
     private void onDelete(ActionEvent e) {
         if (selectedTaskId == null) return;
 
@@ -178,6 +204,9 @@ public class Ventana extends JFrame {
         }
     }
 
+    /**
+     * Limpia el formulario y desactiva los botones de edición.
+     */
     private void clearForm() {
         titleField.setText("");
         descriptionField.setText("");
