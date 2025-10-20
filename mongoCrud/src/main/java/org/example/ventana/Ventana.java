@@ -7,7 +7,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.*;
 import java.util.List;
 
 public class Ventana extends JFrame {
@@ -126,9 +125,9 @@ public class Ventana extends JFrame {
         for (Task t : tasks) {
             tableModel.addRow(new Object[]{
                     t.getId().toHexString(),
-                    t.getTitle(),
-                    t.getDescription(),
-                    t.isCompleted()
+                    t.getTitulo(),
+                    t.getDescripcion(),
+                    t.isCompletada()
             });
         }
         clearForm();

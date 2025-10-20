@@ -7,10 +7,10 @@ import com.mongodb.client.MongoDatabase;
 public class MongoDBConnection {
 
     // Local
-    private static final String CONNECTION_STRING = "mongodb://localhost:27017";
+    private static final String CONNECTION_LOCAL = "mongodb://localhost:27017";
 
     // Nombre de la base de datos
-    private static final String DATABASE_NAME = "ToDo";
+    private static final String DATABASE_NOMBRE = "ToDo";
 
     // Objeto que gestiona la conexión al servidor
     private static MongoClient mongoClient;
@@ -25,8 +25,8 @@ public class MongoDBConnection {
      * Crea el cliente MongoDB y obtiene la base de datos especificada.
      */
     static { // Evita que se tenga que instanciar la clase manualmente
-        mongoClient = MongoClients.create(CONNECTION_STRING); // Crea el cliente con la URI
-        database = mongoClient.getDatabase(DATABASE_NAME); // Obtiene la base de datos
+        mongoClient = MongoClients.create(CONNECTION_LOCAL); // Crea el cliente con la URI
+        database = mongoClient.getDatabase(DATABASE_NOMBRE); // Obtiene la base de datos
     }
 
     /**
@@ -38,14 +38,4 @@ public class MongoDBConnection {
         return database;
     }
 
-    /**
-     * Cierra la conexión con el servidor MongoDB
-     *
-     * Es importante llamarlo al finalizar el uso de la base de datos para liberar recursos.
-     */
-    public static void close() {
-        if (mongoClient != null) {
-            mongoClient.close();
-        }
-    }
 }
