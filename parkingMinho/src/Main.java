@@ -13,8 +13,8 @@ public class Main {
 
     public static void main(String[] args) {
         int numCoches = randon.nextInt(100) + 40;
-        System.out.println("Bienvenidos al parking de Miño!");
-        System.out.println("Han llegado "+numCoches+" coches al parking!");
+        System.out.println("\u200B\uD83C\uDD7F\uFE0F\u200BBienvenidos al parking de Miño!\u200B\uD83C\uDD7F\uFE0F\u200B");
+        System.out.println("\u200B\uD83C\uDD7F\uFE0F\u200BHan llegado "+numCoches+" coches al parking!\u200B\uD83C\uDD7F\uFE0F\u200B");
 
         for (int i = 1;i<=numCoches;i++){
             new Coche(i).start();
@@ -37,17 +37,17 @@ public class Main {
         @Override
         public void run(){
             try {
-                System.out.println("Coche "+id+" llega al parking y espera en la barrera");
+                System.out.println("\uD83D\uDE97Coche "+id+" llega al parking y espera en la barrera \uD83D\uDEA7\u200B");
                 barrera.acquire();
 
                 if (parking.availablePermits()==0){
-                    System.out.println("Coche "+id+" no puede entrar(parking completo)");
+                    System.out.println("\uD83D\uDE97Coche "+id+" no puede entrar(parking completo)⛔\u200B");
                     barrera.release();
                     return;
                 }
 
                 parking.acquire();
-                System.out.println("Barrera abre para coche "+id+". Entra y aparca...");
+                System.out.println("\uD83E\uDD51\u200BBarrera abre para coche "+id+". Entra y aparca...\uD83D\uDFE2\u200B");
                 Thread.sleep(TIEMPO_ENTRADA_SALIDA);
 
                 barrera.release();
@@ -58,19 +58,21 @@ public class Main {
 
                 int tiempoPlaya = randon.nextInt(10000)+5000;
                 double tiempoMin = tiempoPlaya/1000.0/60.0;
-                System.out.printf("Coche %d estará en la playa durante %.2f min.%n", id, tiempoMin);
+                System.out.println();
+                System.out.printf("\uD83C\uDFD6\uFE0F\u200B\uD83E\uDE73Coche %d estará en la playa durante %.2f min.%n \uD83C\uDFD6\uFE0F\u200B\uD83E\uDE73",
+                        id, tiempoMin);
                 Thread.sleep(tiempoPlaya);
 
 
                 barrera.acquire();
-                System.out.println("Coche "+id+" sale del parking...");
+                System.out.println("\uD83D\uDE97Coche "+id+" sale del parking...");
                 Thread.sleep(TIEMPO_ENTRADA_SALIDA);
                 parking.release();
                 barrera.release();
 
                 plazasOcupadas = CAPACIDAD_PARKING - parking.availablePermits();
                 System.out.printf("Display: %d plazas ocupadas.%n",plazasOcupadas);
-                System.out.println("Coche "+id+" ha salido del parking. \n");
+                System.out.println("\uD83D\uDE97Coche "+id+" ha salido del parking.\uD83D\uDD1A\u200B \n");
 
 
 
