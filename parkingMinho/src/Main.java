@@ -1,81 +1,99 @@
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
-public class Main {
-
-    // Arreglar que no entren más coches una vez completado el parking.
+public class Main{
 
     private static final int CAPACIDAD_PARKING = 30;
-    private static final int TIEMPO_ENTRADA_SALIDA= 1000;
+    private static final int TIEMPO_ENTRADA_SALIDA = 1000;
 
-    private static final Semaphore parking = new Semaphore(CAPACIDAD_PARKING,true);
-    private static final Semaphore barrera = new Semaphore(1,true); // Solo un coche puede pasar por la barrera
-
+    private static final Semaphore[] plazas = new Semaphore[CAPACIDAD_PARKING]; // Cada plaza como semáforo
+    private static final Semaphore barrera = new Semaphore(1, true); // Solo un coche a la vez
     private static final Random random = new Random();
 
     public static void main(String[] args) {
-        int numCoches = random.nextInt(100) + 40;
-        System.out.println("\u200B\uD83C\uDD7F\uFE0F\u200BBienvenidos al parking de Miño!\u200B\uD83C\uDD7F\uFE0F\u200B");
-        System.out.println("\u200B\uD83C\uDD7F\uFE0F\u200BHan llegado "+numCoches+" coches al parking!\u200B\uD83C\uDD7F\uFE0F\u200B");
+        // Inicializamos plazas
+        for (int i = 0; i < CAPACIDAD_PARKING; i++) {
+            plazas[i] = new Semaphore(1, true);
+        }
 
-        for (int i = 1;i<=numCoches;i++){
+        int numCoches = random.nextInt(100) + 40;
+        System.out.println("🚦 Bienvenidos al parking de Miño! 🚦");
+        System.out.println("🚗 Han llegado " + numCoches + " coches al parking 🚗\n");
+
+        for (int i = 1; i <= numCoches; i++) {
             new Coche(i).start();
             try {
-                Thread.sleep(random.nextInt(500));
-
-            }catch (InterruptedException e) {
+                Thread.sleep(random.nextInt(500)); // Intervalo aleatorio entre coches
+            } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
     }
-    static class Coche extends Thread{
+
+    static class Coche extends Thread {
         private int id;
 
-        public Coche(int id){
+        public Coche(int id) {
             this.id = id;
         }
-
 
         @Override
         public void run() {
             try {
-                System.out.println("🚗 Coche " + id + " llega al parking y espera una plaza...");
+                System.out.println("🚗 Coche " + id + " llega al parking y busca plaza...");
 
-                // Espera hasta que haya una plaza libre (sin bloquear la barrera)
-                parking.acquire();
+                int plazaAsignada = -1;
 
-                // Una vez hay plaza libre, ahora pasa por la barrera (uno a la vez)
+                // Buscar plaza libre
+                while (plazaAsignada == -1) {
+                    for (int i = 0; i < CAPACIDAD_PARKING; i++) {
+                        if (plazas[i].tryAcquire()) {
+                            plazaAsignada = i;
+                            break;
+                        }
+                    }
+                    if (plazaAsignada == -1) {
+                        System.out.println("🔴 Parking lleno para coche " + id + ". Esperando...");
+                        Thread.sleep(500);
+                    }
+                }
+
+                // Pasar por la barrera
                 barrera.acquire();
-                System.out.println("🟢 Barrera abre para coche " + id + ". Entra y aparca...");
+                System.out.println("🟢 Barrera abre para coche " + id + ". Entra y aparca en plaza " + (plazaAsignada + 1));
                 Thread.sleep(TIEMPO_ENTRADA_SALIDA);
                 barrera.release();
 
-                int plazasOcupadas = CAPACIDAD_PARKING - parking.availablePermits();
-                System.out.printf("Display: %d/%d plazas ocupadas.%n", plazasOcupadas, CAPACIDAD_PARKING);
+                // Mostrar estado del parking
+                mostrarEstado();
 
+                // Tiempo en la playa
                 int tiempoPlaya = random.nextInt(10000) + 5000;
                 double tiempoMin = tiempoPlaya / 1000.0 / 60.0;
                 System.out.printf("🏖️ Coche %d estará en la playa durante %.2f min.%n", id, tiempoMin);
                 Thread.sleep(tiempoPlaya);
 
-                // Salida: vuelve a pasar por la barrera
+                // Salida
                 barrera.acquire();
-                System.out.println("🚗 Coche " + id + " sale del parking...");
+                System.out.println("🚗 Coche " + id + " sale del parking de la plaza " + (plazaAsignada + 1));
                 Thread.sleep(TIEMPO_ENTRADA_SALIDA);
                 barrera.release();
 
-                // Libera plaza
-                parking.release();
-
-                plazasOcupadas = CAPACIDAD_PARKING - parking.availablePermits();
-                System.out.printf("Display: %d plazas ocupadas.%n", plazasOcupadas);
-                System.out.println("🚗 Coche " + id + " ha salido del parking.\n");
+                // Liberar plaza
+                plazas[plazaAsignada].release();
+                mostrarEstado();
 
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
 
-
+        private void mostrarEstado() {
+            int ocupadas = 0;
+            for (Semaphore s : plazas) {
+                if (s.availablePermits() == 0) ocupadas++;
+            }
+            System.out.printf("📟 Display: %d/%d plazas ocupadas.%n", ocupadas, CAPACIDAD_PARKING);
+        }
     }
 }
