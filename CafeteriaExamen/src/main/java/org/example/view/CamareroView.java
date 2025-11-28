@@ -15,7 +15,8 @@ public class CamareroView extends JPanel {
     private JTextArea txtResultado;
     private JButton btnCargarMenu;
     private JButton btnCrearPedido;
-    private JTextArea txtMenu; // Nuevo área específica para el menú
+    private JPanel panelMenuContainer; // ✅ CAMBIADO: Panel en lugar de TextArea
+    private JScrollPane scrollMenu; // ✅ Para el scroll
 
     public CamareroView() {
         setLayout(new BorderLayout(10, 10));
@@ -36,19 +37,28 @@ public class CamareroView extends JPanel {
         // Panel central dividido en dos - Menú y Productos
         JPanel panelCentral = new JPanel(new GridLayout(1, 2, 10, 10));
 
-        // Panel izquierdo - Menú
+        // Panel izquierdo - Menú CON IMÁGENES
         JPanel panelMenu = new JPanel(new BorderLayout());
-        panelMenu.setBorder(BorderFactory.createTitledBorder("Menú Disponible"));
+        panelMenu.setBorder(BorderFactory.createTitledBorder("🍽️ Menú Disponible con Imágenes"));
 
-        txtMenu = new JTextArea(15, 25);
-        txtMenu.setEditable(false);
-        txtMenu.setFont(new Font("Consolas", Font.PLAIN, 11));
-        txtMenu.setText("Haz clic en 'Cargar Menú' para ver los productos disponibles");
-        JScrollPane scrollMenu = new JScrollPane(txtMenu);
+        // ✅ PANEL CONTAINER PARA LOS PRODUCTOS CON IMÁGENES
+        panelMenuContainer = new JPanel();
+        panelMenuContainer.setLayout(new BoxLayout(panelMenuContainer, BoxLayout.Y_AXIS));
+        panelMenuContainer.setBackground(Color.WHITE);
+
+        scrollMenu = new JScrollPane(panelMenuContainer);
+        scrollMenu.setPreferredSize(new Dimension(400, 300));
+        scrollMenu.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // Mensaje inicial
+        JLabel lblMensajeInicial = new JLabel("Haz clic en 'Cargar Menú' para ver los productos con imágenes");
+        lblMensajeInicial.setHorizontalAlignment(SwingConstants.CENTER);
+        panelMenuContainer.add(lblMensajeInicial);
+
         panelMenu.add(scrollMenu, BorderLayout.CENTER);
 
         JPanel panelBotonesMenu = new JPanel(new FlowLayout());
-        btnCargarMenu = new JButton("Cargar Menú");
+        btnCargarMenu = new JButton("🔄 Cargar Menú con Imágenes");
         panelBotonesMenu.add(btnCargarMenu);
         panelMenu.add(panelBotonesMenu, BorderLayout.SOUTH);
 
@@ -87,7 +97,7 @@ public class CamareroView extends JPanel {
         btnCargarMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cargarMenu();
+                cargarMenuConImagenes();
             }
         });
 
@@ -99,54 +109,154 @@ public class CamareroView extends JPanel {
         });
     }
 
-    private void cargarMenu() {
+    // ✅ MÉTODO PARA CARGAR IMAGEN DESDE URL
+    private ImageIcon cargarImagenDesdeURL(String urlString, int ancho, int alto) {
+        try {
+            java.net.URL url = new java.net.URL(urlString);
+            java.awt.Image imagenOriginal = javax.imageio.ImageIO.read(url);
+
+            // Redimensionar la imagen
+            java.awt.Image imagenRedimensionada = imagenOriginal.getScaledInstance(ancho, alto, java.awt.Image.SCALE_SMOOTH);
+
+            return new ImageIcon(imagenRedimensionada);
+        } catch (Exception e) {
+            System.out.println("❌ Error cargando imagen: " + urlString);
+            // Devolver un icono de placeholder si falla
+            return crearIconoPlaceholder(ancho, alto);
+        }
+    }
+
+    // ✅ MÉTODO PARA CREAR ICONO PLACEHOLDER
+    private ImageIcon crearIconoPlaceholder(int ancho, int alto) {
+        java.awt.Image imagen = new java.awt.image.BufferedImage(ancho, alto, java.awt.image.BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = (Graphics2D) imagen.getGraphics();
+        g2d.setColor(Color.LIGHT_GRAY);
+        g2d.fillRect(0, 0, ancho, alto);
+        g2d.setColor(Color.DARK_GRAY);
+        g2d.drawRect(0, 0, ancho-1, alto-1);
+        g2d.drawString("❌ Imagen", 5, alto/2);
+        g2d.dispose();
+        return new ImageIcon(imagen);
+    }
+
+    // ✅ NUEVO MÉTODO: CARGAR MENÚ CON IMÁGENES REALES
+    private void cargarMenuConImagenes() {
         new Thread(() -> {
             String resultado = ApiClient.obtenerMenu();
             SwingUtilities.invokeLater(() -> {
                 try {
                     JSONArray menu = new JSONArray(resultado);
-                    StringBuilder sb = new StringBuilder();
 
-                    sb.append("╔══════════════════════════════════════╗\n");
-                    sb.append("║           MENÚ DISPONIBLE            ║\n");
-                    sb.append("╚══════════════════════════════════════╝\n\n");
+                    // ✅ LIMPIAR EL PANEL ANTERIOR
+                    panelMenuContainer.removeAll();
+                    panelMenuContainer.setBackground(Color.WHITE);
 
-                    sb.append("┌────┬──────────────────────┬────────┬──────┐\n");
-                    sb.append("│ ID │ PRODUCTO             │ TIPO   │ PREC │\n");
-                    sb.append("├────┼──────────────────────┼────────┼──────┤\n");
+                    // ✅ TÍTULO
+                    JLabel lblTitulo = new JLabel("🎯 MENÚ DISPONIBLE - " + menu.length() + " productos");
+                    lblTitulo.setFont(new Font("Arial", Font.BOLD, 14));
+                    lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+                    panelMenuContainer.add(lblTitulo);
+                    panelMenuContainer.add(Box.createRigidArea(new Dimension(0, 10)));
 
                     for (int i = 0; i < menu.length(); i++) {
                         JSONObject producto = menu.getJSONObject(i);
-                        String nombre = producto.getString("nombre");
-                        // Nombres más cortos para caber mejor
-                        if (nombre.length() > 18) {
-                            nombre = nombre.substring(0, 15) + "...";
+
+                        // ✅ CREAR PANEL PARA CADA PRODUCTO
+                        JPanel panelProducto = new JPanel(new BorderLayout(10, 5));
+                        panelProducto.setBorder(BorderFactory.createCompoundBorder(
+                                BorderFactory.createLineBorder(new Color(200, 200, 200)),
+                                BorderFactory.createEmptyBorder(8, 8, 8, 8)
+                        ));
+                        panelProducto.setBackground(Color.WHITE);
+                        panelProducto.setMaximumSize(new Dimension(380, 80));
+
+                        // ✅ PANEL IZQUIERDO: IMAGEN
+                        JPanel panelImagen = new JPanel(new FlowLayout(FlowLayout.LEFT));
+                        panelImagen.setBackground(Color.WHITE);
+
+                        ImageIcon icono = null;
+                        boolean tieneImagen = false;
+
+                        // ✅ INTENTAR CARGAR LA PRIMERA IMAGEN SI EXISTE
+                        if (producto.has("imagenes_urls")) {
+                            try {
+                                JSONArray imagenesUrls = producto.getJSONArray("imagenes_urls");
+                                if (imagenesUrls.length() > 0) {
+                                    String primeraImagenUrl = imagenesUrls.getString(0);
+                                    icono = cargarImagenDesdeURL(primeraImagenUrl, 60, 60);
+                                    tieneImagen = true;
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Error cargando imagen para producto " + producto.getInt("id"));
+                            }
                         }
 
-                        sb.append("│ ")
-                                .append(padRight(String.valueOf(producto.getInt("id")), 2))
-                                .append(" │ ")
-                                .append(padRight(nombre, 20))
-                                .append(" │ ")
-                                .append(padRight(producto.getString("tipo"), 6))
-                                .append(" │ ")
-                                .append(padRight(producto.getString("precio") + "€", 4))
-                                .append(" │\n");
+                        if (!tieneImagen) {
+                            icono = crearIconoPlaceholder(60, 60);
+                        }
+
+                        JLabel lblImagen = new JLabel(icono);
+                        panelImagen.add(lblImagen);
+
+                        // ✅ PANEL DERECHO: INFORMACIÓN
+                        JPanel panelInfo = new JPanel(new GridLayout(3, 1, 2, 2));
+                        panelInfo.setBackground(Color.WHITE);
+
+                        String emoji = producto.has("emoji") ? producto.getString("emoji") : "❓";
+                        String nombre = producto.getString("nombre");
+                        String tipo = producto.getString("tipo");
+                        String precio = producto.getString("precio") + "€";
+                        int id = producto.getInt("id");
+
+                        JLabel lblNombre = new JLabel(emoji + " " + nombre);
+                        lblNombre.setFont(new Font("Arial", Font.BOLD, 12));
+
+                        JLabel lblDetalles = new JLabel(tipo + " • " + precio);
+                        lblDetalles.setFont(new Font("Arial", Font.PLAIN, 11));
+                        lblDetalles.setForeground(Color.DARK_GRAY);
+
+                        JLabel lblId = new JLabel("ID: " + id);
+                        lblId.setFont(new Font("Arial", Font.PLAIN, 10));
+                        lblId.setForeground(Color.GRAY);
+
+                        panelInfo.add(lblNombre);
+                        panelInfo.add(lblDetalles);
+                        panelInfo.add(lblId);
+
+                        // ✅ ENSAMBLAR EL PANEL DEL PRODUCTO
+                        panelProducto.add(panelImagen, BorderLayout.WEST);
+                        panelProducto.add(panelInfo, BorderLayout.CENTER);
+
+                        panelMenuContainer.add(panelProducto);
+                        panelMenuContainer.add(Box.createRigidArea(new Dimension(0, 8)));
                     }
 
-                    sb.append("└────┴──────────────────────┴────────┴──────┘\n");
-                    sb.append("\n💡 Usa: id,cantidad\n");
-                    sb.append("   Ej: 1,2 = 2 Café Latte\n");
+                    // ✅ ACTUALIZAR LA INTERFAZ
+                    panelMenuContainer.revalidate();
+                    panelMenuContainer.repaint();
 
-                    txtMenu.setText(sb.toString());
+                    // ✅ MOSTRAR MENSAJE DE ÉXITO EN LA CONSOLA
+                    System.out.println("✅ Menú cargado con " + menu.length() + " productos e imágenes");
 
                 } catch (Exception e) {
-                    txtMenu.setText("❌ Error cargando menú:\n" + resultado);
+                    // ✅ MOSTRAR ERROR EN EL PANEL
+                    panelMenuContainer.removeAll();
+                    JLabel lblError = new JLabel("❌ Error cargando menú: " + e.getMessage());
+                    lblError.setForeground(Color.RED);
+                    panelMenuContainer.add(lblError);
+                    panelMenuContainer.revalidate();
+                    panelMenuContainer.repaint();
                 }
             });
         }).start();
     }
 
+    // ✅ MÉTODO ORIGINAL cargarMenu (lo mantenemos por si acaso)
+    private void cargarMenu() {
+        cargarMenuConImagenes(); // Redirigir al nuevo método
+    }
+
+    // ✅ MÉTODO crearPedido (SE MANTIENE IGUAL)
     private void crearPedido() {
         String nombre = txtNombreCliente.getText().trim();
         String idLocal = txtIdLocal.getText().trim();
@@ -182,14 +292,12 @@ public class CamareroView extends JPanel {
                             int id = Integer.parseInt(partes[0].trim());
                             int cantidad = Integer.parseInt(partes[1].trim());
 
-                            // ✅ VALIDACIÓN EN JAVA - Cantidad debe ser > 0
                             if (cantidad < 1) {
                                 tieneErrores = true;
                                 errores.append("❌ Línea '").append(linea).append("': Cantidad debe ser 1 o más\n");
                                 continue;
                             }
 
-                            // ✅ VALIDACIÓN EN JAVA - ID debe estar entre 1-6
                             if (id < 1 || id > 6) {
                                 tieneErrores = true;
                                 errores.append("❌ Línea '").append(linea).append("': ID debe estar entre 1-6\n");
@@ -211,7 +319,6 @@ public class CamareroView extends JPanel {
                     }
                 }
 
-                // Si hay errores de validación, mostrarlos y salir
                 if (tieneErrores) {
                     SwingUtilities.invokeLater(() -> {
                         txtResultado.setText("⚠️ ERRORES EN LOS PRODUCTOS:\n\n" + errores.toString() +
@@ -222,7 +329,6 @@ public class CamareroView extends JPanel {
                     return;
                 }
 
-                // Validar que hay al menos un producto válido
                 if (productosArray.length() == 0) {
                     SwingUtilities.invokeLater(() -> {
                         txtResultado.setText("❌ Error: No se encontraron productos válidos\n" +
@@ -274,11 +380,19 @@ public class CamareroView extends JPanel {
                             total += subtotal;
 
                             String nombreProducto = producto.getString("nombre");
+
+                            // ✅ OBTENER EMOJI SI EXISTE
+                            String emoji = "";
+                            if (producto.has("emoji")) {
+                                emoji = producto.getString("emoji") + " ";
+                            }
+
                             if (nombreProducto.length() > 18) {
                                 nombreProducto = nombreProducto.substring(0, 15) + "...";
                             }
 
-                            sb.append("│ • ").append(padRight(nombreProducto, 18))
+                            sb.append("│ • ").append(emoji)
+                                    .append(padRight(nombreProducto, 18))
                                     .append(" x").append(cantidad)
                                     .append(" ").append(String.format("%5.2f", subtotal)).append("€ │\n");
                         }
@@ -292,7 +406,7 @@ public class CamareroView extends JPanel {
 
                         txtResultado.setText(sb.toString());
 
-                        // ✅ LIMPIAR CAMPOS - AHORA SÍ FUNCIONA
+                        // ✅ LIMPIAR CAMPOS
                         txtNombreCliente.setText("");
                         txtIdLocal.setText("");
                         txtProductos.setText("Formato: id,cantidad (uno por línea)\nEjemplo:\n1,2\n2,1\n3,1");
@@ -300,7 +414,6 @@ public class CamareroView extends JPanel {
                     } catch (Exception ex) {
                         txtResultado.setText("=== RESPUESTA DEL SERVIDOR ===\n" + resultado);
 
-                        // Limpiar campos si parece exitoso
                         if (resultado.contains("_id") && resultado.contains("productos")) {
                             txtNombreCliente.setText("");
                             txtIdLocal.setText("");
